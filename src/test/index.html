@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- ... existing meta tags ... -->
+    <title>ECP Open SDK example</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.symphony.com/resources/ui-toolkit/v4.3.2/css/uitoolkit.css"
+    />
+    <link rel="stylesheet" href="../../dist/ecpopen.css">
+  </head>
+
+  <body id="page-container" class="dark tk-text-color">
+    <!-- ... existing HTML ... -->
+
+    <!-- Import the ECP Open SDK -->
+    
+
+    <script src="../../dist/ecpopen.js"></script>
+
+    <!-- Initialize SDK -->
+    <script type="module">
+      // SDK configuration
+      const config = {
+        getPodUrl: () => `https://develop2.symphony.com`,
+        getPartnerId: () => null,
+        getStreamId: () => `0UbMs0SfTxKAQL2GdAa0JH///m2ZuWMTdA==`,
+      };
+
+      const configureSDK = () => {
+        window.sdk.configuration = {
+          podUrl: config.getPodUrl(),
+          partnerId: config.getPartnerId(),
+          onReady: () => {
+            document
+              .querySelectorAll(".disable-if-no-main")
+              .forEach((el) => el.removeAttribute("disabled"));
+            document
+              .querySelectorAll(".disable-on-main")
+              .forEach((el) => el.setAttribute("disabled", "true"));
+          },
+        };
+      };
+
+      // Now you can access it as:
+      const launcher = new window.ECPOpen.Launcher();
+
+      function initLauncher() {
+        const container = document.getElementById("page-container");
+
+        if (container) {
+          launcher.mount(container);
+          configureSDK();
+          window.sdk.openStream(
+            config.getStreamId(),
+            "symphony-main-frame-container"
+          );
+        }
+        document.removeEventListener("DOMContentLoaded", initLauncher);
+      }
+
+      document.addEventListener("DOMContentLoaded", initLauncher);
+    </script>
+  </body>
+</html>
