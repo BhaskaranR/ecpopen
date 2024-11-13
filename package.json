@@ -15,6 +15,7 @@
     "start": "npx open-cli http://127.0.0.1:8080/src/test/index.html & npx http-server . -a 127.0.0.1 -p 8080",
     "dev": "vite",
     "build": "vite build",
+    "build:prod": "vite build --mode production",
     "preview": "vite preview"
   },
   "devDependencies": {

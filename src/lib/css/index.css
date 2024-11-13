@@ -58,6 +58,11 @@
 	overflow: hidden;
 }
 
+.frame-container {
+	width: 400px;
+	height: 526px;
+}
+
 #symphony-main-frame-container {
 	height: 100%;
 }
