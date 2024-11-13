@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
-import path from 'path';
+const path = require('path');
+const { defineConfig } = require('vite');
 
-export default defineConfig({
+module.exports = defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/lib/js/index.js'),
@@ -20,10 +20,5 @@ export default defineConfig({
         },
       }
     },
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src/lib')
-    }
   }
 });

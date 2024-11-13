@@ -1,24 +1,13 @@
 {
   "name": "ecpopen",
   "version": "0.0.0",
-  "type": "module",
-  "files": ["dist"],
-  "main": "./dist/ecpopen.umd.js",
-  "module": "./dist/ecpopen.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/ecpopen.es.js",
-      "require": "./dist/ecpopen.umd.js"
-    }
-  },
   "scripts": {
     "start": "npx open-cli http://127.0.0.1:8080/src/test/index.html & npx http-server . -a 127.0.0.1 -p 8080",
     "dev": "vite",
     "build": "vite build",
-    "build:prod": "vite build --mode production",
-    "preview": "vite preview"
+    "build:prod": "vite build --mode production"
   },
-  "devDependencies": {
+  "dependencies": {
     "vite": "^5.4.10",
     "http-server": "^14.1.1",
     "open-cli": "^8.0.0"
